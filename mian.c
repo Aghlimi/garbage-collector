@@ -6,7 +6,7 @@
 /*   By: aghlimi <aghlimi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:27:35 by aghlimi           #+#    #+#             */
-/*   Updated: 2025/02/08 11:27:36 by aghlimi          ###   ########.fr       */
+/*   Updated: 2025/02/09 08:25:18 by aghlimi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	*gc(size_t size, char flag, void *ptr)
 		if (node == NULL)
 			return (NULL);
 		add_gc(&gc_head, node);
+		return node->ptr;
 	}
 	else if (flag == 'f')
 	{
@@ -32,4 +33,12 @@ void	*gc(size_t size, char flag, void *ptr)
 	{
 		gc_free(&gc_head, ptr);
 	}
+	return NULL;
+}
+
+int main()
+{
+	char* ptr = gc(10,'m',NULL);
+	(void)ptr;
+	return 0;
 }
